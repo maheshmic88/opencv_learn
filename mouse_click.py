@@ -1,10 +1,15 @@
 import cv2
 import numpy as np
 
-#Create a black image, a window and bind the function to window
+#Mouse callback function
+def draw_rect(event,x,y,flag,param):
+    if event == cv2.EVENT_LBUTTONDBLCLK:
+        cv2.rectangle(img,(x,y),(x+100,y+100),(200,200,0),-1)
 
+#Create a black image, a window and bind the function to window
 img = np.zeros((512,512,3),np.uint8)
 cv2.namedWindow('image')
+cv2.setMouseCallback("image", draw_rect)
 
 #close on pressing Esc key
 while(1):
